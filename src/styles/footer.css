@@ -1,0 +1,47 @@
+.footer {
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--text-light);
+  text-align: left;
+  padding: var(--spacing-xl) var(--spacing-lg);
+  margin-top: auto;
+  border-top: 3px solid var(--accent);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-md);
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.footer-section h2 {
+  margin: 0 0 var(--spacing-sm);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  font-family: var(--font-title);
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.footer-section li {
+  margin-bottom: 0.45rem;
+  line-height: 1.4;
+  font-size: 0.9rem;
+}
+
+.footer-section a {
+  color: var(--text-light);
+}
+
+.payment-methods li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}

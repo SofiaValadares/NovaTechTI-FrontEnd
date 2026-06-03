@@ -1,0 +1,66 @@
+:root {
+  /* Marca NovaTech TI */
+  --primary: #1e3a5f;
+  --primary-light: #2a4f7a;
+  --primary-dark: #152a45;
+  --secondary: #4da8da;
+  --accent: #66d9e8;
+  --accent-soft: #e8f7fb;
+
+  /* Superfícies */
+  --background: #f4f7fb;
+  --background-elevated: #ffffff;
+  --background-secondary: #e8eef4;
+  --background-dark: #1e3a5f;
+  --surface-light: #f8fafc;
+  --surface-card: #ffffff;
+
+  /* Texto */
+  --text: #2d3748;
+  --text-muted: #64748b;
+  --text-light: #ffffff;
+
+  /* Botões */
+  --button-bg: var(--primary);
+  --button-bg-hover: var(--secondary);
+  --button-text: #ffffff;
+
+  /* Bordas e sombras */
+  --border-color: #dbe3ec;
+  --border-radius: 10px;
+  --border-radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(30, 58, 95, 0.08);
+  --shadow: 0 4px 20px rgba(30, 58, 95, 0.1);
+  --shadow-lg: 0 12px 40px rgba(30, 58, 95, 0.14);
+  --shadow-header: 0 2px 12px rgba(15, 23, 42, 0.2);
+
+  /* Tipografia */
+  --font-main: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  --font-title: 'Poppins', 'Segoe UI', sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.75rem;
+  --font-size-2xl: 2.25rem;
+
+  /* Espaçamento */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  --container-width: 1200px;
+  --transition: 0.25s ease;
+
+  /* Formulários */
+  --input-focus-shadow: 0 0 0 3px rgba(77, 168, 218, 0.35);
+  --input-error-color: #c53030;
+  --input-success-color: #0b7a3b;
+
+  /* Status API */
+  --status-online: #16a34a;
+  --status-offline: #dc2626;
+  --status-checking: #d97706;
+}

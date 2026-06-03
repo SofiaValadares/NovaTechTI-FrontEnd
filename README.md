@@ -1,46 +1,101 @@
-# Getting Started with Create React App
+# NovaTech TI — Frontend (AV2)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend React (TypeScript) do projeto acadêmico **NovaTech TI**, com **Design System e layout da AV1** ([NovaTech-TI](https://github.com/SofiaValadares/NovaTech-TI)) e integração à API da AV2:
 
-## Available Scripts
+[https://github.com/SofiaValadares/NovaTeckTi-BackEnd](https://github.com/SofiaValadares/NovaTeckTi-BackEnd)
 
-In the project directory, you can run:
+## Páginas (AV1 + AV2)
 
-### `npm start`
+| Rota | Página AV1 | Integração AV2 |
+|------|------------|----------------|
+| `/` | Home (apresentação, vídeo, galeria, fundadores) | `GET /api/servicos-ti` (cards de serviços) |
+| `/login` | Login de clientes | `POST /api/autenticacao` |
+| `/cadastro` | Cadastro de clientes | `POST /api/clientes` |
+| `/troca-senha` | Troca de senha | `POST /api/autenticacao/troca-senha` |
+| `/servicos` | Solicitação de serviços (carrinho) | `GET/PUT` serviços e solicitações |
+| `/cadastro-servico` | — (nova na AV2) | `POST /api/servicos-ti` |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Funcionalidades API
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+| Página | Endpoint |
+|--------|----------|
+| Login | `POST /api/autenticacao` |
+| Troca de senha | `POST /api/autenticacao/troca-senha` |
+| Cadastro de cliente | `POST /api/clientes` |
+| Perfil do usuário (serviços) | `GET /api/clientes?login=` |
+| Carrinho — serviços | `GET /api/servicos-ti` |
+| Carrinho — solicitações | `GET /api/solicitacoes?login=` |
+| Carrinho — salvar | `PUT /api/solicitacoes` |
+| Cadastro de serviço (AV2) | `POST /api/servicos-ti` |
 
-### `npm test`
+## Pré-requisitos
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js 18+
+- Backend rodando em `http://localhost:8080`
 
-### `npm run build`
+## URL da API
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Fixa em `src/config/api.ts` → `http://localhost:8080`. **Não é necessário** criar variável no Vercel nem arquivo `.env`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tela “Backend offline”
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Se a API não responder, o app exibe uma página com:
 
-### `npm run eject`
+- link do repositório [NovaTeckTi-BackEnd](https://github.com/SofiaValadares/NovaTeckTi-BackEnd)
+- comandos para clonar e rodar `./mvnw spring-boot:run`
+- botão **Tentar novamente** (verifica a cada 5s automaticamente)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Quando o backend voltar, o fluxo normal é restaurado.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deploy no Vercel (frontend) + backend local
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Faça deploy no Vercel normalmente (sem variáveis de ambiente).
+2. Rode o backend na sua máquina: `./mvnw spring-boot:run`
+3. Abra o site do Vercel **no mesmo computador** onde o backend está rodando.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+O arquivo `vercel.json` já configura o roteamento SPA do React.
 
-## Learn More
+## Executar
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+# Terminal 1 — backend (no repositório do BackEnd)
+./mvnw spring-boot:run
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Terminal 2 — frontend
+npm install
+npm start
+```
+
+Aplicação: [http://localhost:3000](http://localhost:3000)
+
+Use `npm start` ou `npm run dev` (não use `nvm run dev`).
+
+### Usuário padrão (seed do backend)
+
+- **Login:** `admin@novatech.com`
+- **Senha:** `Admin@123`
+
+## Estrutura
+
+```
+src/
+├── api/              # Cliente HTTP e chamadas à API
+├── components/       # Layout, formulários, alertas
+├── context/          # Sessão do usuário (login)
+├── pages/            # Uma página por rota (AV2)
+├── types/            # Tipos da API
+└── utils/            # Validações e datas
+```
+
+## Requisitos técnicos (AV2)
+
+- Controle de estado exclusivamente com **Hooks** do React
+- Um componente principal por página
+- Componentes menores reutilizáveis (`Layout`, `FormGroup`, `AlertMessage`)
+- Sem manipulação direta do DOM JavaScript
+
+## Build
+
+```bash
+npm run build
+```

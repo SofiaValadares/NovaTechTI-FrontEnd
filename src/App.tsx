@@ -1,25 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { ApiStatusProvider } from './context/ApiStatusContext';
+import { AuthProvider } from './context/AuthContext';
+import { BackendGate } from './components/BackendGate';
+import { RequireAuth } from './components/RequireAuth';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import CadastroClientePage from './pages/CadastroClientePage';
+import TrocaSenhaPage from './pages/TrocaSenhaPage';
+import CarrinhoPage from './pages/CarrinhoPage';
+import CadastroServicoPage from './pages/CadastroServicoPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <ApiStatusProvider>
+      <BrowserRouter>
+        <BackendGate>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/cadastro" element={<CadastroClientePage />} />
+          <Route path="/troca-senha" element={<TrocaSenhaPage />} />
+          <Route
+            path="/servicos"
+            element={
+              <RequireAuth>
+                <CarrinhoPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/carrinho"
+            element={<Navigate to="/servicos" replace />}
+          />
+          <Route
+            path="/cadastro-servico"
+            element={
+              <RequireAuth>
+                <CadastroServicoPage />
+              </RequireAuth>
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+        </BackendGate>
+      </BrowserRouter>
+      </ApiStatusProvider>
+    </AuthProvider>
   );
 }
 
