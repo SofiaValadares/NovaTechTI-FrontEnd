@@ -24,7 +24,7 @@ export function Header() {
             <span className="material-icons" aria-hidden="true">
               home
             </span>
-            Home
+            <span className="nav-label">Home</span>
           </Link>
           {!isAuthenticated && (
             <>
@@ -32,13 +32,13 @@ export function Header() {
                 <span className="material-icons" aria-hidden="true">
                   login
                 </span>
-                Login
+                <span className="nav-label">Login</span>
               </Link>
               <Link to="/cadastro">
                 <span className="material-icons" aria-hidden="true">
                   person_add
                 </span>
-                Cadastro
+                <span className="nav-label">Cadastro</span>
               </Link>
             </>
           )}
@@ -48,13 +48,13 @@ export function Header() {
                 <span className="material-icons" aria-hidden="true">
                   engineering
                 </span>
-                Solicitar Serviços
+                <span className="nav-label">Solicitar Serviços</span>
               </Link>
               <Link to="/cadastro-servico">
                 <span className="material-icons" aria-hidden="true">
                   add_circle
                 </span>
-                Novo Serviço
+                <span className="nav-label">Novo Serviço</span>
               </Link>
               <button type="button" className="btn-logout" onClick={signOut}>
                 Sair
