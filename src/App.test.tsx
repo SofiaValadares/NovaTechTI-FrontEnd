@@ -8,7 +8,7 @@ jest.mock('./context/ApiStatusContext', () => ({
   ),
   useApiStatus: () => ({
     status: 'online' as const,
-    apiUrl: 'http://localhost:8080',
+    apiUrl: 'https://novateckti-backend.onrender.com',
     lastChecked: new Date(),
     refresh: jest.fn(),
   }),

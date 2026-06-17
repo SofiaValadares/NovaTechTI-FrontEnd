@@ -31,37 +31,39 @@ Frontend React (TypeScript) do projeto acadêmico **NovaTech TI**, com **Design 
 ## Pré-requisitos
 
 - Node.js 18+
-- Backend rodando em `http://localhost:8080`
+- API publicada em [https://novateckti-backend.onrender.com](https://novateckti-backend.onrender.com)
 
 ## URL da API
 
-Fixa em `src/config/api.ts` → `http://localhost:8080`. **Não é necessário** criar variável no Vercel nem arquivo `.env`.
+Padrão em `src/config/api.ts`:
 
-## Tela “Backend offline”
+```
+https://novateckti-backend.onrender.com
+```
 
-Se a API não responder, o app exibe uma página com:
+Para desenvolvimento local com backend na máquina, crie `.env`:
 
-- link do repositório [NovaTeckTi-BackEnd](https://github.com/SofiaValadares/NovaTeckTi-BackEnd)
-- comandos para clonar e rodar `./mvnw spring-boot:run`
-- botão **Tentar novamente** (verifica a cada 5s automaticamente)
+```
+REACT_APP_API_URL=http://localhost:8080
+```
 
-Quando o backend voltar, o fluxo normal é restaurado.
+Não é necessário variável de ambiente no Vercel.
 
-## Deploy no Vercel (frontend) + backend local
+## Tela “API indisponível”
+
+Se a API na Render não responder (cold start ou serviço parado), o app exibe instruções e o botão **Tentar novamente** (verifica a cada 5s).
+
+## Deploy no Vercel
 
 1. Faça deploy no Vercel normalmente (sem variáveis de ambiente).
-2. Rode o backend na sua máquina: `./mvnw spring-boot:run`
-3. Abra o site do Vercel **no mesmo computador** onde o backend está rodando.
+2. O front já aponta para `https://novateckti-backend.onrender.com`.
+3. Na primeira visita após inatividade, aguarde o cold start da Render (~30–60s).
 
 O arquivo `vercel.json` já configura o roteamento SPA do React.
 
-## Executar
+## Executar localmente
 
 ```bash
-# Terminal 1 — backend (no repositório do BackEnd)
-./mvnw spring-boot:run
-
-# Terminal 2 — frontend
 npm install
 npm start
 ```
@@ -69,6 +71,8 @@ npm start
 Aplicação: [http://localhost:3000](http://localhost:3000)
 
 Use `npm start` ou `npm run dev` (não use `nvm run dev`).
+
+Para usar backend local, crie `.env` com `REACT_APP_API_URL=http://localhost:8080`.
 
 ### Usuário padrão (seed do backend)
 

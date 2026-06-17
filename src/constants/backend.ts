@@ -3,6 +3,8 @@ import { API_BASE_URL } from '../config/api';
 export const BACKEND_REPO_URL =
   'https://github.com/SofiaValadares/NovaTeckTi-BackEnd';
 
+export const BACKEND_RENDER_URL = 'https://novateckti-backend.onrender.com';
+
 export const BACKEND_DEFAULT_URL = API_BASE_URL;
 
 export const BACKEND_RUN_COMMAND = './mvnw spring-boot:run';

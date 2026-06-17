@@ -116,6 +116,18 @@
   line-height: 1.6;
 }
 
+.backend-offline__lista {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+}
+
+.backend-offline__lista li {
+  margin-bottom: var(--spacing-sm);
+}
+
 .backend-offline__vercel li {
   margin-bottom: var(--spacing-sm);
 }
